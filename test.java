@@ -6,7 +6,7 @@ public class test {
     public static void main(String[] args) {
 
         ArrayList <Integer> digitList = new ArrayList<>();
-        int num = 15704;
+        int num = 15706;
         int place = 0;
         while (num > 0){
             place++;
