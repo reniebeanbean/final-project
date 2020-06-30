@@ -1,4 +1,9 @@
-public class Species {
+public class Species<E> {
+	private static class OrganismList<E>
+	{
+		ru
+	}
+		
 	String name;
 	boolean isPlant;
 	boolean isAquatic;
