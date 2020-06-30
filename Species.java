@@ -3,6 +3,7 @@ public class Species {
 	boolean isPlant;
 	boolean isAquatic;
 	boolean isCarnivorous;
+        int population;
 	
 	public Species(String name, boolean isPlant, boolean isAquatic, boolean isCarnivorous)
 	{
@@ -10,6 +11,7 @@ public class Species {
 		this.isPlant = isPlant;
 		this.isAquatic = isAquatic;
 		this.isCarnivorous = isCarnivorous;
+                population = 0;
 	}
 	
 	public String getName()
