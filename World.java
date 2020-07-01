@@ -1,17 +1,17 @@
 import java.util.Comparator;
-import java.util.Timer;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 public class World implements Comparator<Species>
 {
-  private Species[] hierarchy;
-  private int pos;
+  private HashMap<Integer, ArrayList<Species>> hierarchy;
   private int capacity;
-  
+  private ArrayList<Species> allSpecies;
   public World()
   {
     capacity = 101;
-    hierarchy = new Species[capacity];
-    pos = 1;
+    hierarchy = new HashMap<Integer, ArrayList<Species>>();
+    allSpecies = new ArrayList<Species>();
   }
   @Override
   public int compare(Species obj1, Species obj2)
@@ -32,56 +32,44 @@ public class World implements Comparator<Species>
   }
   public void insert(Species s)
   {
-    if(pos == capacity)
+    if(allSpecies.size() == capacity)
     {
       return;
     }
     else
     {
-      hierarchy[pos++] = s;
-      int child = pos - 1;
-      int parent = child/2;
-      while(compare(hierarchy[parent], hierarchy[child]) == -1)
+      allSpecies.add(s);
+      for(int i = 1; i<=5; i++)
       {
-        Species temp = hierarchy[parent];
-        hierarchy[parent] = hierarchy[child];
-        hierarchy[child] = temp;
-        child = parent;
-        parent = child/2;
-      }
+        ArrayList<Species> arr = new ArrayList<Species>();
+        for(int j = 0; j<allSpecies.size(); j++)
+        {
+          if(allSpecies.get(j).getKey() == i)
+          {
+            hierarchy.put(i, arr);
+          }
+        }
+    }
     }
   }
   public void delete()
   {
-    for(int i = 0; i<hierarchy.length; i++)
+    for(int i = 0; i<hierarchy.size(); i++)
     {
-      if(hierarchy[i].getPopulation() == 0)
+      for(int j = 0; j<hierarchy.get(i).size(); j++)
       {
-        System.out.println(hierarchy[i].getName() + " s went extinct");
-        hierarchy[i] = null;
-        pos--;
+        if(hierarchy.get(i).get(j).getPopulation() == 0)
+        {
+          System.out.println(hierarchy.get(i).remove(j) + "s went extinct");
+        }
       }
     }
-      int child = pos - 1;
-      int parent = child/2;
-      while(compare(hierarchy[parent], hierarchy[child]) == -1)
-      {
-        Species temp = hierarchy[parent];
-        hierarchy[parent] = hierarchy[child];
-        hierarchy[child] = temp;
-        child = parent;
-        parent = child/2;
-      }
-  }
-  public int getPos()
-  {
-      return pos;
   }
   public int getCapacity()
   {
       return capacity;
   }
-  public Species[] getHierarchy()
+  public HashMap<Integer,ArrayList<Species>> getHierarchy()
   {
       return hierarchy;
   }
