@@ -26,31 +26,11 @@ public class World implements Comparator<Species>
     {
       return 1;
     }
-    else if(obj1 == null)
+    else if(obj1 == null && obj2 != null)
     {
       return -1
+    }
     return 0;
-  }
-  
-  public Species left(Species s)
-  {
-    for(int i = 0; i<hierarchy.length; i++)
-    {
-      if(hierarchy[i] == s)
-      {
-        return hierarchy[2*i + 1];
-      }
-    }
-  }
-  public Species right(Species s)
-  {
-    for(int i = 0; i<hierarchy.length; i++)
-    {
-      if(hierarchy[i] == s)
-      {
-        return hierarchy[2*i + 2];
-      }
-    }
   }
   public void insert(Species s)
   {
