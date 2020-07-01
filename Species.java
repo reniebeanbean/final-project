@@ -1,12 +1,51 @@
-import java.util.ArrayList;
-public class Species
+
+public class Species<E>
 {
-	ArrayList<Organism> organisms;
+	private static class Node<E>
+	{
+		E element;
+		Node prev;
+		Node next;
+		public node(E element, Node prev, Node next)
+		{
+			this.element = element;
+			this.prev = prev;
+			this.next = next;
+		}
+		public E getElement()
+		{
+			return element;
+		}
+		public void setElement(E element)
+		{
+			this.element = element;
+		}
+		public Node getNext()
+		{
+			return next;
+		}
+		public void setNext(Node n)
+		{
+			next = n;
+		}
+		public Node getPrev()
+		{
+			return prev;
+		}
+		public void setPrev(Node p)
+		{
+			prev = p;
+		}
+	}
+			
+	int population;
 	int key; 
 	String name;
 	boolean isPlant;
 	boolean isAquatic;
 	boolean isCarnivorous;
+	Node header;
+	Node trailer;
 	
 	public Species(String name, boolean isPlant, boolean isAquatic, boolean isCarnivorous)
 	{
@@ -14,6 +53,9 @@ public class Species
 		this.isPlant = isPlant;
 		this.isAquatic = isAquatic;
 		this.isCarnivorous = isCarnivorous;
+		header = new Node(null, null, trailer)
+		trailer = new Node(null, header, null);
+		population = 0;
 		if(isCarnivorous)
 		{
 			key = (int)Math.random()*2 + 4;
@@ -29,11 +71,10 @@ public class Species
 				key = (int)Math.random()*2 +2;
 			}
 		}
-		organisms = new ArrayList<Organism>();
 		Organism first = new Organism(this);
 		Organism second = new Organism(this);
-		organisms.add(first);
-		organisms.add(second);
+		add(first);
+		add(second);
 	}
 	
 	public String getName()
@@ -70,7 +111,7 @@ public class Species
 	}
 	public int getPopulation()
 	{
-		return organisms.size();
+		return population;
 	}
 	public int getKey()
 	{
@@ -78,11 +119,24 @@ public class Species
 	}
 	public void add(Organism o)
 	{
-	    organisms.add(o);
+	    Node newNode = new Node(0, trailer.getPrev(), trailer);
+		trailer.getPrev().setNext(newNode);
+		trailer.setPrev(newNode);
+		population++;
 	}
-	public ArrayList<Organism> getOrganisms()
+	public void delete(Organism o)
 	{
-	    return organisms;
+		Node n = header.getNext();
+		for(int i = 0; i<population; i++)
+		{
+			if(n.getElement() == o)
+			{
+				n.getNext().setPrev(n.getPrev());
+				n.getPrev().setNext(n.getNext());
+				population--;
+			}
+			n = n.getNext();
+		}	
 	}
 	
 	
