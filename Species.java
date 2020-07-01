@@ -1,14 +1,10 @@
-public class Species<E> {
-	private static class OrganismList<E>
-	{
-		ru
-	}
-		
+public class Species
+{
+	ArrayList<Organism> organisms;	
 	String name;
 	boolean isPlant;
 	boolean isAquatic;
 	boolean isCarnivorous;
-        int population;
 	
 	public Species(String name, boolean isPlant, boolean isAquatic, boolean isCarnivorous)
 	{
@@ -16,7 +12,11 @@ public class Species<E> {
 		this.isPlant = isPlant;
 		this.isAquatic = isAquatic;
 		this.isCarnivorous = isCarnivorous;
-                population = 0;
+		organisms = new ArrayList<Organism>();
+		Organism first = new Organism();
+		Organism second = new Organism();
+		organisms.add(first)
+		organisms.add(second);
 	}
 	
 	public String getName()
@@ -51,6 +51,11 @@ public class Species<E> {
 	{
 		isCarnivorous = p;
 	}
+	public int getPopulation()
+	{
+		return organisms.size();
+	}
+	
 	
 
 	
