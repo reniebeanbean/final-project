@@ -30,8 +30,8 @@ public class Species
 			}
 		}
 		organisms = new ArrayList<Organism>();
-		Organism first = new Organism();
-		Organism second = new Organism();
+		Organism first = new Organism(this);
+		Organism second = new Organism(this);
 		organisms.add(first);
 		organisms.add(second);
 	}
@@ -76,8 +76,17 @@ public class Species
 	{
 		return key;
 	}
+	public void add(Organism o)
+	{
+	    organisms.add(o);
+	}
+	public ArrayList<Organism> getOrganisms()
+	{
+	    return organisms;
+	}
 	
 	
 
 	
 }
+
