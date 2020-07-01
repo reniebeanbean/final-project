@@ -6,29 +6,27 @@ public class World implements Comparator<Species>
   private Species[] hierarchy;
   private int pos;
   private int capacity;
-  Species root;
   
   public World()
   {
     capacity = 101;
     hierarchy = new Species[capacity];
     pos = 1;
-    root = null;
   }
   @Override
   public int compare(Species obj1, Species obj2)
   {
-    if(obj1.getKey() < obj2.getKey())
+    if(obj1 == null && obj2 != null)
+    {
+      return -1;
+    }
+    else if(obj1.getKey() < obj2.getKey())
     {
       return -1;
     }
     else if(obj1.getKey() > obj2.getKey())
     {
       return 1;
-    }
-    else if(obj1 == null && obj2 != null)
-    {
-      return -1;
     }
     return 0;
   }
@@ -59,6 +57,7 @@ public class World implements Comparator<Species>
     {
       if(hierarchy[i].getPopulation() == 0)
       {
+        System.out.println(hierarchy[i].getName() + " s went extinct");
         hierarchy[i] = null;
         pos--;
       }
@@ -74,5 +73,16 @@ public class World implements Comparator<Species>
         parent = child/2;
       }
   }
+  public int getPos()
+  {
+      return pos;
+  }
+  public int getCapacity()
+  {
+      return capacity;
+  }
+  public Species[] getHierarchy()
+  {
+      return hierarchy;
+  }
 }
-  
