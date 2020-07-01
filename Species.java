@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 public class Species
 {
-	ArrayList<Organism> organisms;	
+	ArrayList<Organism> organisms;
+	int key; 
 	String name;
 	boolean isPlant;
 	boolean isAquatic;
@@ -12,6 +14,21 @@ public class Species
 		this.isPlant = isPlant;
 		this.isAquatic = isAquatic;
 		this.isCarnivorous = isCarnivorous;
+		if(isCarnivorous)
+		{
+			key = (int)Math.random()*2 + 4;
+		}
+		else
+		{
+			if(isPlant)
+			{
+				key = 1;
+			}
+			else
+			{
+				key = (int)Math.random()*2 +2;
+			}
+		}
 		organisms = new ArrayList<Organism>();
 		Organism first = new Organism();
 		Organism second = new Organism();
@@ -54,6 +71,10 @@ public class Species
 	public int getPopulation()
 	{
 		return organisms.size();
+	}
+	public int getKey()
+	{
+		return key;
 	}
 	
 	
