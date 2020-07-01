@@ -28,7 +28,7 @@ public class World implements Comparator<Species>
     }
     else if(obj1 == null && obj2 != null)
     {
-      return -1
+      return -1;
     }
     return 0;
   }
@@ -74,4 +74,5 @@ public class World implements Comparator<Species>
         parent = child/2;
       }
   }
+}
   
