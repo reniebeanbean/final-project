@@ -32,7 +32,7 @@ public class Species
 		organisms = new ArrayList<Organism>();
 		Organism first = new Organism();
 		Organism second = new Organism();
-		organisms.add(first)
+		organisms.add(first);
 		organisms.add(second);
 	}
 	
