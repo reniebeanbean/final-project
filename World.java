@@ -16,7 +16,7 @@ public class World implements Comparator<Species>
     hierarchy = new HashMap<Integer, ArrayList<Species>>();
     allSpecies = new ArrayList<Species>();
     ArrayList<Species> blank = new ArrayList<Species>();
-    for(int i = 1; i<=5; i++)
+    for(int i = 1; i<=3; i++)
     {
         hierarchy.put(i, blank);
     }
@@ -119,14 +119,32 @@ public class World implements Comparator<Species>
         }
         else if(isAquatic)
         {
-            Species newSpecies = new Species("Fish " + fish, isPlant, isAquatic, isCarnivorous);
+            String eatType = "";
+            if(isCarnivorous)
+            {
+              eatType = "Carnivore";
+            }
+            else
+            {
+              eatType = "Herbivore";
+             }
+            Species newSpecies = new Species("Fish " + fish + "--" + eatType, isPlant, isAquatic, isCarnivorous);
             fish++;
             this.insert(newSpecies);
             System.out.println(newSpecies.getName() + " have been added");
         }
         else
         {
-            Species newSpecies = new Species("Animal " + landAnimals, isPlant, isAquatic, isCarnivorous);
+          String eatType = "";
+            if(isCarnivorous)
+            {
+              eatType = "Carnivore";
+            }
+            else
+            {
+              eatType = "Herbivore";
+             }
+            Species newSpecies = new Species("Animal " + landAnimals + "--" + eatType, isPlant, isAquatic, isCarnivorous);
             landAnimals++;
             this.insert(newSpecies);
             System.out.println(newSpecies.getName() + " have been added");
