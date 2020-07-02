@@ -61,7 +61,7 @@ public class Species<E>
   population = 0;
   if(isCarnivorous)
   {
-   key = (int)Math.random()*2 + 4;
+   key = 3
   }
   else
   {
@@ -71,7 +71,7 @@ public class Species<E>
    }
    else
    {
-    key = (int)Math.random()*2 +2;
+    key = 2;
    }
   }
   Organism first = new Organism(this);
