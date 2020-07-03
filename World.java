@@ -43,13 +43,14 @@ public class World implements Comparator<Species>
   }
   public void insert(Species s)
   {
-    if(allSpecies.size() == capacity)
+    if(allSpecies.size() >= capacity)
     {
       return;
     }
     else
     {
       allSpecies.add(s);
+      System.out.println("A new " + s.getName() + " was added");
       for(int i = 1; i<=5; i++)
       {
         ArrayList<Species> arr = new ArrayList<Species>();
@@ -115,7 +116,6 @@ public class World implements Comparator<Species>
             Species newSpecies = new Species("Plant " + plants, isPlant, isAquatic, isCarnivorous);
             plants++;
             this.insert(newSpecies);
-            System.out.println(newSpecies.getName() + " have been added");
         }
         else if(isAquatic)
         {
@@ -131,7 +131,6 @@ public class World implements Comparator<Species>
             Species newSpecies = new Species("Fish " + fish + "--" + eatType, isPlant, isAquatic, isCarnivorous);
             fish++;
             this.insert(newSpecies);
-            System.out.println(newSpecies.getName() + " have been added");
         }
         else
         {
@@ -147,7 +146,6 @@ public class World implements Comparator<Species>
             Species newSpecies = new Species("Animal " + landAnimals + "--" + eatType, isPlant, isAquatic, isCarnivorous);
             landAnimals++;
             this.insert(newSpecies);
-            System.out.println(newSpecies.getName() + " have been added");
         }
         
   }
