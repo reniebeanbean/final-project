@@ -151,7 +151,7 @@ public class World implements Comparator<Species>
   }
   public void randomEvent(Organism o)
     {
-        int event = (int)(Math.random()*2);
+        int event = (int)(Math.random()*4);
         int key = o.getType().getKey();
         if(event == 0)
         {
@@ -161,7 +161,49 @@ public class World implements Comparator<Species>
         {
             addSpecies();
         }
+        if(event == 2)
+        {
+          if(o.getType().isCarnivorous() && !o.getType().isAquatic())
+          {
+            o.eat(getRandomSpecies(2,false).getRandomOrganism());
+          }
+          if(o.getType().isCarnivorous() && o.getType().isAquatic())
+          {
+            o.eat(getRandomSpecies(2,true).getRandomOrganism());
+          }
+          if(!o.getType().isCarnivorous() && !o.getType().isAquatic)
+          {
+            o.eat(getRandomSpecies(1,false).getRandomOrganism());
+          }
+          if(!o.getType().isCarnivorous() && !o.getType().isAquatic)
+          {
+            o.eat(getRandomSpecies(1,true).getRandomOrganism());
+          }
+       }
+       if(event == 3)
+       {
+          o.die();
+       }
+          
     }
+    public Species getRandomSpecies(int key, boolean isMarine)
+    {
+      Species s = new Organism("", false, false, false)
+      if(isMarine())
+      {
+        while(!s.isAquatic())
+        {
+          int randomAmount = (int)(Math.random()*(this.getHierarchy().get(key).size()));
+          s = this.getHierarchy().get(key).get(randomAmount);
+        }
+     }
+     else
+     {
+        int randomAmount = (int)(Math.random()*(this.getHierarchy().get(key).size()));
+          s = this.getHierarchy().get(key).get(randomAmount);
+     }
+   }
+            
     public void event()
     {
         if(allSpecies.size() == 0)
