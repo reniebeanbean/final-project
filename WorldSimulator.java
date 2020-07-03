@@ -11,6 +11,7 @@ public class WorldSimulator
                 public void run()
                 {
                     newWorld.event();
+                    newWorld.delete();
                 }
             };
             time.schedule(task, 0, 1000);
