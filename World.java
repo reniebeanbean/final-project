@@ -229,6 +229,7 @@ public class World implements Comparator<Species>
                             {
                                 randomEvent(s.traverse(k));
                             }
+                            s.present();
                         }
                     }
                 }
