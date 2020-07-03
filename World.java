@@ -153,7 +153,7 @@ public class World implements Comparator<Species>
   }
   public void randomEvent(Organism o)
     {
-        int event = (int)Math.random()*2;
+        int event = (int)(Math.random()*2);
         int key = o.getType().getKey();
         if(event == 0)
         {
