@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 
 public class Species<E>
@@ -65,7 +64,7 @@ public class Species<E>
   death = 0;
   if(isCarnivorous)
   {
-   key = 3
+   key = 3;
   }
   else
   {
