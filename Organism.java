@@ -10,13 +10,13 @@ public class Organism{
 	/*Below the constructor will be some action methods. They could be like eating organisms from another species, reproduce, genetic mutation, etc*/
 	public void reproduce(Organism o)
 	{
-	    if(this.getTyp e() == o.getType())
+	    if(this.getType() == o.getType())
 	    {
 	        Organism newThing = new Organism(type);
 	        type.add(newThing);
 	    }
 	}
-	public void eat(organsim o)
+	public void eat(Organism o)
 	{
 		o.die();
 	}
