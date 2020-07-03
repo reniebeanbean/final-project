@@ -42,6 +42,8 @@ public class Species<E>
    
  int population;
  int key; 
+ int death;
+ int birth;
  String name;
  boolean isPlant;
  boolean isAquatic;
@@ -59,6 +61,8 @@ public class Species<E>
   trailer = new Node(null, header, null);
   header.setNext(trailer);
   population = 0;
+  birth = 2;
+  death = 0;
   if(isCarnivorous)
   {
    key = 3
@@ -185,6 +189,10 @@ public class Species<E>
          n = n.getNext();
      }
      return (Organism)n.getElement();
+ }
+ public void present()
+ {
+   System.out.println(this.getName() + " poopulation: " + getPopulation());
  }
  
  
