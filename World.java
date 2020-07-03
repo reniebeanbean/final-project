@@ -67,7 +67,7 @@ public class World implements Comparator<Species>
   }
   public void delete()
   {
-    for(int i = 0; i<hierarchy.size(); i++)
+    for(int i = 1; i<=hierarchy.size(); i++)
     {
       for(int j = 0; j<hierarchy.get(i).size(); j++)
       {
@@ -188,8 +188,8 @@ public class World implements Comparator<Species>
     }
     public Species getRandomSpecies(int key, boolean isMarine)
     {
-      Species s = new Organism("", false, false, false)
-      if(isMarine())
+      Species s = new Species("", false, false, false);
+      if(isMarine)
       {
         while(!s.isAquatic())
         {
@@ -202,6 +202,7 @@ public class World implements Comparator<Species>
         int randomAmount = (int)(Math.random()*(this.getHierarchy().get(key).size()));
           s = this.getHierarchy().get(key).get(randomAmount);
      }
+     return s;
    }
             
     public void event()
@@ -219,6 +220,8 @@ public class World implements Comparator<Species>
             }
             if(event == 1)
             {
+               try
+               {
                 for(int i = 1; i<=this.getHierarchy().size(); i++)
                 {
                         for(int j = 0; j< this.getHierarchy().get(i).size(); j++)
@@ -232,6 +235,11 @@ public class World implements Comparator<Species>
                             s.present();
                         }
                     }
+                }
+                catch(NullPointerException ne)
+                {
+                    return;
+                }
                 }
             }
     }
