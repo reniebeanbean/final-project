@@ -17,6 +17,14 @@ public class Organism{
 	        System.out.println("A new " + type.getName() + " was added");
 	    }
 	}
+	public void eat(organsim o)
+	{
+		o.getType().delete(o);
+	}
+	public void die()
+	{
+		this.getType().delete(this);
+	}
 	public Species getType()
 	{
 	    return type;
