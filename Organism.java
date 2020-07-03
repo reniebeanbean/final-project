@@ -14,7 +14,6 @@ public class Organism{
 	    {
 	        Organism newThing = new Organism(type);
 	        type.add(newThing);
-	        type.getBirth()++;
 	    }
 	}
 	public void eat(organsim o)
@@ -24,7 +23,6 @@ public class Organism{
 	public void die()
 	{
 		this.getType().delete(this);
-		type.getDeath()++;
 	}
 	public Species getType()
 	{
